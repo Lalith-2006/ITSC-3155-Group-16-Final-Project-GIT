@@ -1,11 +1,11 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, DateTime
 from ..dependencies.database import Base
 
 
 class Promotion(Base):
     __tablename__ = "promotions"
 
-    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    code = Column(String(50), unique=True)
+    id = Column(Integer, primary_key=True, index=True)
+    code = Column(String(50))
     discount = Column(Integer)
-    expiration_date = Column(String(50))
+    expiration_date = Column(DateTime)

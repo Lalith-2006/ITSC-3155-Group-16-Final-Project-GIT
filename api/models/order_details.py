@@ -1,12 +1,16 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, ForeignKey, DECIMAL
+from sqlalchemy.orm import relationship
 from ..dependencies.database import Base
 
 
-class Customer(Base):
-    __tablename__ = "customers"
+class OrderDetail(Base):
+    __tablename__ = "order_details"
 
-    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    name = Column(String(100))
-    email = Column(String(100))
-    number = Column(String(20))
-    address = Column(String(200))
+    id = Column(Integer, primary_key=True, index=True)
+    order_id = Column(Integer, ForeignKey("orders.id"))
+    item_id = Column(Integer, ForeignKey("menu_items.id"))
+    quantity = Column(Integer)
+    price = Column(DECIMAL)
+
+    order = relationship("Order", back_populates="order_details")
+    item = relationship("MenuItem", back_populates="order_details")

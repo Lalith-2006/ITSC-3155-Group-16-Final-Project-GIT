@@ -1,24 +1,20 @@
-from datetime import datetime
-from typing import Optional
 from pydantic import BaseModel
+from typing import Optional
 
 
 class ResourceBase(BaseModel):
-    item: str
+    resource_name: str
     amount: int
+    unit: str
+    cost_per_unit: float
 
 
 class ResourceCreate(ResourceBase):
     pass
 
 
-class ResourceUpdate(BaseModel):
-    item: Optional[str] = None
-    amount: Optional[int] = None
-
-
 class Resource(ResourceBase):
     id: int
 
-    class ConfigDict:
+    class Config:
         from_attributes = True

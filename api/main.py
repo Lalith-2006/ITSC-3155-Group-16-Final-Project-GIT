@@ -18,6 +18,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from sqlalchemy import inspect
+from .dependencies.database import engine
+
+#testing that tables exist:
+@app.on_event("startup")
+def show_tables():
+    print(inspect(engine).get_table_names())
+
 model_loader.index()
 indexRoute.load_routes(app)
 
