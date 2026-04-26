@@ -1,5 +1,10 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, List
+
+
+class MenuItemResourceCreate(BaseModel):
+    resource_id: int
+    quantity_needed: int
 
 
 class MenuItemBase(BaseModel):
@@ -10,7 +15,7 @@ class MenuItemBase(BaseModel):
 
 
 class MenuItemCreate(MenuItemBase):
-    pass
+    ingredients: List[MenuItemResourceCreate]
 
 
 class MenuItem(MenuItemBase):

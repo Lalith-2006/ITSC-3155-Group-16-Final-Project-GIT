@@ -8,8 +8,11 @@ class Payment(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     order_id = Column(Integer, ForeignKey("orders.id"))
-    payment_type = Column(String(50))
-    card_number = Column(String(50))
-    transaction_status = Column(String(50))
+
+    payment_type = Column(String(50))  # card / cash
+
+    amount = Column(String(50))
+
+    transaction_status = Column(String(50))  # pending / completed / failed
 
     order = relationship("Order", back_populates="payment")

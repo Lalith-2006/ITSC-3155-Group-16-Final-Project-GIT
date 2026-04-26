@@ -1,21 +1,20 @@
-from datetime import datetime
-from typing import Optional
 from pydantic import BaseModel
+from typing import Optional
 
 
 class OrderDetailBase(BaseModel):
-    amount: int
+    quantity: int
 
 
 class OrderDetailCreate(OrderDetailBase):
     order_id: int
-    menu_item_id: int   # replaced sandwich_id
+    menu_item_id: int
 
 
 class OrderDetailUpdate(BaseModel):
     order_id: Optional[int] = None
     menu_item_id: Optional[int] = None
-    amount: Optional[int] = None
+    quantity: Optional[int] = None
 
 
 class OrderDetail(OrderDetailBase):

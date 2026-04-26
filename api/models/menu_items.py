@@ -13,3 +13,4 @@ class MenuItem(Base):
     category = Column(String(50))
 
     order_details = relationship("OrderDetail", back_populates="item")
+    resources = relationship("MenuItemResource", back_populates="menu_item")
