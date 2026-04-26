@@ -5,8 +5,8 @@ from typing import Optional
 class PaymentBase(BaseModel):
     order_id: int
     payment_type: str
-    card_number: Optional[str] = None
-    transaction_status: Optional[str] = None
+    amount: Optional[float] = None
+    transaction_status: Optional[str] = "pending"
 
 
 class PaymentCreate(PaymentBase):

@@ -13,6 +13,7 @@ class Order(Base):
     tracking_number = Column(String(100))
     status = Column(String(50))
     total_price = Column(DECIMAL)
+    order_type = Column(String(50))
 
     customer = relationship("Customer", back_populates="orders")
     order_details = relationship("OrderDetail", back_populates="order")
