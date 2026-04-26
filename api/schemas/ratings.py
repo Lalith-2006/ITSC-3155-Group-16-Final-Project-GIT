@@ -17,3 +17,8 @@ class Rating(RatingBase):
 
     class Config:
         from_attributes = True
+
+class RatingUpdate(BaseModel):
+    customer_id: Optional[int] = None
+    review_text: Optional[str] = None
+    score: Optional[int] = None
