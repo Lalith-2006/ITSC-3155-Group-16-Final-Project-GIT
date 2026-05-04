@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from .routers import index as indexRoute
 from .models import model_loader
 from .dependencies.config import conf
-
+from .sampledata import data
 
 app = FastAPI()
 
@@ -25,6 +25,7 @@ from .dependencies.database import engine
 @app.on_event("startup")
 def show_tables():
     print(inspect(engine).get_table_names())
+    data()
 
 model_loader.index()
 indexRoute.load_routes(app)
